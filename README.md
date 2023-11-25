@@ -28,12 +28,6 @@ To access a user's library, you need to have a music_user_token. See MusicKit fo
 python setup.py install
 ```
 
-or
-
-```
-pip install apple-music-python
-```
-
 ### Example
 
 ```python
