@@ -560,7 +560,7 @@ class AppleMusic:
         :param storefront: Apple Music Storefront
         :param l: The localization to use, specified by a language tag. Check API documentation.
         :param include: Additional relationships to include in the fetch. Check API documentation.
-        :param views: The views to activate for the albums' resource.
+        :param views: The views to activate for the artists' resource.
         Possible Values: appears-on-albums, compilation-albums, featured-albums, featured-music-videos,
         featured-playlists, full-albums, latest-release, live-albums, similar-artists, singles,
         top-music-videos, top-songs
