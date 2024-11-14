@@ -332,18 +332,21 @@ class AppleMusic:
         return results
 
     # Resources
-    def album(self, album_id, storefront='us', l=None, include=None):
+    def album(self, album_id, storefront='us', l=None, include=None, views=None):
         """
         Get a catalog Album by ID
+        See https://developer.apple.com/documentation/applemusicapi/get_a_catalog_album
 
         :param album_id: Album ID
         :param storefront: Apple Music Storefront
         :param l: The localization to use, specified by a language tag. Check API documentation.
         :param include: Additional relationships to include in the fetch. Check API documentation.
+        :param views: The views to activate for the albums' resource.
+        Possible Values: appears-on, other-versions, related-albums, related-videos
 
         :return: Album data in JSON format
         """
-        return self._get_resource(album_id, 'albums', storefront=storefront, l=l, include=include)
+        return self._get_resource(album_id, 'albums', storefront=storefront, l=l, include=include, views=views)
 
     def album_relationship(self, album_id, relationship, storefront='us', l=None, limit=None, offset=None):
         """
@@ -387,18 +390,20 @@ class AppleMusic:
         """
         return self._get_resource_by_filter(filter_type='upc', filter_list=album_upcs, resource_type='albums', storefront=storefront, l=l, include=include)
     
-    def music_video(self, music_video_id, storefront='us', l=None, include=None):
+    def music_video(self, music_video_id, storefront='us', l=None, include=None, views=None):
         """
         Get a catalog Music Video by ID
+        See https://developer.apple.com/documentation/applemusicapi/get_a_catalog_music_video
 
         :param music_video_id: Music Video ID
         :param storefront: Apple Music Storefront
         :param l: The localization to use, specified by a language tag. Check API documentation.
         :param include: Additional relationships to include in the fetch. Check API documentation.
+        :param views: The views to activate for the resource. Possible Values: more-by-artist, more-in-genre
 
         :return: Music Video data in JSON format
         """
-        return self._get_resource(music_video_id, 'music-videos', storefront=storefront, l=l, include=include)
+        return self._get_resource(music_video_id, 'music-videos', storefront=storefront, l=l, include=include, views=views)
 
     def music_video_relationship(self, music_video_id, relationship, storefront='us', l=None, limit=None, offset=None):
         """
@@ -445,14 +450,16 @@ class AppleMusic:
         return self._get_resource_by_filter('isrc', isrcs, 'music-videos', resource_ids=music_video_ids,
                                             storefront=storefront, l=l, include=include)
 
-    def playlist(self, playlist_id, storefront='us', l=None, include=None):
+    def playlist(self, playlist_id, storefront='us', l=None, include=None, views=None):
         """
         Get a catalog Playlist by ID
+        See https://developer.apple.com/documentation/applemusicapi/get_a_catalog_playlist
 
         :param playlist_id: Playlist ID
         :param storefront: Apple Music Storefront
         :param l: The localization to use, specified by a language tag. Check API documentation.
         :param include: Additional relationships to include in the fetch. Check API documentation.
+        :param views: The views to activate for the resource. Possible Values: featured-artists, more-by-curator
 
         :return: Playlist data in JSON format
         """
@@ -544,18 +551,23 @@ class AppleMusic:
         return self._get_resource_by_filter('isrc', isrcs, 'songs', resource_ids=song_ids,
                                             storefront=storefront, l=l, include=include, extend=extend)
 
-    def artist(self, artist_id, storefront='us', l=None, include=None):
+    def artist(self, artist_id, storefront='us', l=None, include=None, views=None):
         """
-        Get a catalog Artist by ID
+        Get a catalog Artist by ID.
+        See https://developer.apple.com/documentation/applemusicapi/get_a_catalog_artist
 
         :param artist_id: Artist ID
         :param storefront: Apple Music Storefront
         :param l: The localization to use, specified by a language tag. Check API documentation.
         :param include: Additional relationships to include in the fetch. Check API documentation.
+        :param views: The views to activate for the albums' resource.
+        Possible Values: appears-on-albums, compilation-albums, featured-albums, featured-music-videos,
+        featured-playlists, full-albums, latest-release, live-albums, similar-artists, singles,
+        top-music-videos, top-songs
 
         :return: Artist data in JSON format
         """
-        return self._get_resource(artist_id, 'artists', storefront=storefront, l=l, include=include)
+        return self._get_resource(artist_id, 'artists', storefront=storefront, l=l, include=include, views=views)
 
     def artist_relationship(self, artist_id, relationship, storefront='us', l=None, limit=None, offset=None):
         """
